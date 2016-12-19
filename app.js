@@ -65,11 +65,24 @@ let cars = makeCar([{
         size: 1,
         money: 10,
 
+ },
+
+ {
+     make: 'Chevrolet',
+     model: 'Suburban',
+     size: 4,
+     money: 200,
+
  }
     
     ]);
 
     console.log (cars);
+
+    for (let i=0; i<cars.length; i++){
+
+    }
+
 
 
     
@@ -78,14 +91,48 @@ let cars = makeCar([{
 // This is a GET api to the backend url
 
 function getLots(){
+    let request = new XMLHttpRequest();
+    request.open('GET', 'url');
+    request.addEventListener('load', function(){
+        let response= JSON.parse(request.responseText);
 
+        for(let i=0; i < response.lots; i++){
+            let lot = response.lots[i];
+            showLots();
 
+        }
+    })
+
+    request.send();
 }
 
-function showLots(){
+function showLots(input){
+    let lot = document.createElement('li');
 
+    let parent = document.querySelector('#lots');
+    parent.appendChild(lot);
 
-}
+    let lotID = document.createElement('h1');
+    lot.appendChild(lotID);
+    lotID.textContent = "Lot " + input.lotNumber;
+
+    let lotCost = document.createElement('p');
+    lot.appendChild(lotCost);
+    lotCost.textContent = "Cost:  $" + input.cost + "/space";
+
+    let lotCapacity = document.createElement ('p');
+    lot.appendChild(lotCapacity);
+    lotCapacity.textContent = "Capacity:  " + input.parkedCars +  " / " + input.lotcapacity;
+
+    let lotCars = document.createElement('h2');
+    lot.appendChild(lotCars);
+    lotCars.textContent = input.parkedcars;
+
+    // All of above is from parsed data in api.  variable names will have
+    // to change based on names agreed upon for the api.  Not sure if cars 
+    // already parked in lot will come back as an array that will have to be looped.
+
+};
 
 // This is a POST api to the backend url
 function carToLot(){
