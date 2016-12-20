@@ -8,17 +8,17 @@ window.addEventListener('load', function(){
     getLots();
     loadCars(fleet);
 
-    // let lot0Btn = document.querySelector('#lot0btn');
-    // lot0Btn.addEventListener('click', carToLot);
+    let lot0Btn = document.querySelector('#lot0btn');
+    lot0Btn.addEventListener('click', carToLot);
 
-    // let lot1Btn = document.querySelector('#lot1btn');
-    // lot1Btn.addEventListener('click', carToLot);
+    let lot1Btn = document.querySelector('#lot1btn');
+    lot1Btn.addEventListener('click', carToLot);
 
-    // let lot2Btn = document.querySelector('#lot2btn');
-    // lot2Btn.addEventListener('click', carToLot);
+    let lot2Btn = document.querySelector('#lot2btn');
+    lot2Btn.addEventListener('click', carToLot);
 
-    // let lot3tBtn = document.querySelector('#lot3btn');
-    // lot3Btn.addEventListener('click', carToLot);
+    let lot3Btn = document.querySelector('#lot3btn');
+    lot3Btn.addEventListener('click', carToLot);
 
     // Below is code if you want to allow user to create car on page
 
@@ -73,6 +73,26 @@ function loadCars(cars){
         let cost = document.createElement('p');
         cost.textContent = "Money: $" + cars[i].money;
         oneCar.appendChild(cost);
+
+        let lot0Btn = document.createElement('button');
+        lot0Btn.textContent = "Lot 0";
+        lot0Btn.setAttribute('id', 'lot0');
+        oneCar.appendChild(lot0Btn);
+
+        let lot1Btn = document.createElement('button');
+        lot1Btn.textContent = "Lot 1";
+        lot1Btn.setAttribute('id', 'lot1');
+        oneCar.appendChild(lot1Btn);
+
+        let lot2Btn = document.createElement('button');
+        lot2Btn.textContent = "Lot 2";
+        lot2Btn.setAttribute('id', 'lot2');
+        oneCar.appendChild(lot2Btn);
+
+        let lot3Btn = document.createElement('button');
+        lot3Btn.textContent = "Lot 3";
+        lot3Btn.setAttribute('id', 'lot3');
+        oneCar.appendChild(lot3Btn);
 
     }
 // return console.log(loadCars(cars));
