@@ -1,16 +1,35 @@
 body{
     font-family:'Franklin Gothic Medium';
+}
 
+#title{
+    background-color:teal;
+    padding:15px 10px;
+    font-size: 2em;
+}
+
+section h1{
+    font-size: 1em;
+    text-align: center;
+    padding:10px;
 }
 
 
 ul{
     list-style: none;
+   
+}
+
+.fleet{
+    background-color:lightgray;
 }
 
 .fleet li{
-    background-color:lightgray;
-    border:2px solid darkgray;
+    background-color:darkgray;
+    border:2px solid black;
+    width: 80%;
+    margin: 0 auto;
+
 }
 
 
