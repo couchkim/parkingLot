@@ -1,13 +1,12 @@
 // When page loads, display all avaiable lots
 // and all available cars.
-// Also, the butons for lots need to have event listeners.
+// Also, the buttons for lots need to have event listeners.
 
 
 
 window.addEventListener('load', function(){
     getLots();
-    makeCar();
-    loadCars();
+    loadCars(fleet);
 
     // let lot0Btn = document.querySelector('#lot0btn');
     // lot0Btn.addEventListener('click', carToLot);
@@ -38,7 +37,7 @@ function makeCar(make, model, size, money){
     }
 }
 
-let cars = [
+let fleet = [
     
     makeCar('Honda', 'Odyssey', 3, 100),
     makeCar('Tesla', 'ModelX', 1, 1000),
@@ -47,36 +46,36 @@ let cars = [
     makeCar('Chevrolet', 'Suburban', 4, 200)
      ];
 
-    console.log (cars);
+    console.log (fleet);
 
     
 
 function loadCars(cars){
     for (let i=0; i<cars.length; i++){
     
-        let parent = document.querySelector('#lots');
+        let parent = document.querySelector('#vehicles');
         let oneCar = document.createElement('li');
 
         parent.appendChild(oneCar);
         
         let brand = document.createElement('h2');
-        brand.textContent = cars.make[i];
+        brand.textContent = cars[i].make;
         oneCar.appendChild(brand);
 
         let type = document.createElement('h2');
-        brand.textContent = cars.model[i];
+        type.textContent = cars[i].model;
         oneCar.appendChild(type);
 
         let spaces = document.createElement('p');
-        brand.textContent = "Size: " + cars.size[i];
+        spaces.textContent = "Size: " + cars[i].size;
         oneCar.appendChild(spaces);
 
         let cost = document.createElement('p');
-        brand.textContent = "Cost: $" + cars.money[i];
+        cost.textContent = "Money: $" + cars[i].money;
         oneCar.appendChild(cost);
 
     }
-return console.log(loadCars(cars));
+// return console.log(loadCars(cars));
 
 }
 
