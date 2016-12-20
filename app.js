@@ -6,7 +6,8 @@
 
 window.addEventListener('load', function(){
     getLots();
-    getCars();
+    makeCar();
+    loadCars();
 
     // let lot0Btn = document.querySelector('#lot0btn');
     // lot0Btn.addEventListener('click', carToLot);
@@ -37,51 +38,47 @@ function makeCar(make, model, size, money){
     }
 }
 
-let cars = makeCar([{
+let cars = [
     
-        make: 'Honda',
-        model: 'Odyssey',
-        size: 3,
-        money: 100,
-    },
-
-    {
-        make: 'Tesla',
-        model: 'ModelX',
-        size: 1,
-        money: 1000,
-
-    },
-
-    {
-        make: 'Ford',
-        model: 'Expedition',
-        size: 4,
-        money: 500,
- },
- {
-        make: 'Ford',
-        model: 'Pinto',
-        size: 1,
-        money: 10,
-
- },
-
- {
-     make: 'Chevrolet',
-     model: 'Suburban',
-     size: 4,
-     money: 200,
-
- }
-    
-    ]);
+    makeCar('Honda', 'Odyssey', 3, 100),
+    makeCar('Tesla', 'ModelX', 1, 1000),
+    makeCar('Ford', 'Expedition', 4, 500),
+    makeCar('Ford', 'Pinto', 1, 10),
+    makeCar('Chevrolet', 'Suburban', 4, 200)
+     ];
 
     console.log (cars);
 
+    
+
+function loadCars(cars){
     for (let i=0; i<cars.length; i++){
+    
+        let parent = document.querySelector('#lots');
+        let oneCar = document.createElement('li');
+
+        parent.appendChild(oneCar);
+        
+        let brand = document.createElement('h2');
+        brand.textContent = cars.make[i];
+        oneCar.appendChild(brand);
+
+        let type = document.createElement('h2');
+        brand.textContent = cars.model[i];
+        oneCar.appendChild(type);
+
+        let spaces = document.createElement('p');
+        brand.textContent = "Size: " + cars.size[i];
+        oneCar.appendChild(spaces);
+
+        let cost = document.createElement('p');
+        brand.textContent = "Cost: $" + cars.money[i];
+        oneCar.appendChild(cost);
 
     }
+return console.log(loadCars(cars));
+
+}
 
 
 
