@@ -1,6 +1,6 @@
 body{
     font-family:'Franklin Gothic Medium';
-    /*background-color:gray;*/
+
 }
 
 
@@ -8,12 +8,26 @@ ul{
     list-style: none;
 }
 
-li{
+.fleet li{
     background-color:lightgray;
     border:2px solid darkgray;
 }
 
 
-ul.h1{
-    display:inline-block;
+.fleet h2{
+    display: inline;
+    margin: 5px;
+    font-size: 1em;
+}
+
+.fleet p{
+    font-size: .5em;
+    margin-left:10px;
+}
+
+.fleet button{
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color:white;
 }

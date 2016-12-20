@@ -75,22 +75,22 @@ function loadCars(cars){
         oneCar.appendChild(cost);
 
         let lot0Btn = document.createElement('button');
-        lot0Btn.textContent = "Lot 0";
+        lot0Btn.textContent = "Add to Lot 0";
         lot0Btn.setAttribute('id', 'lot0');
         oneCar.appendChild(lot0Btn);
 
         let lot1Btn = document.createElement('button');
-        lot1Btn.textContent = "Lot 1";
+        lot1Btn.textContent = "Add to Lot 1";
         lot1Btn.setAttribute('id', 'lot1');
         oneCar.appendChild(lot1Btn);
 
         let lot2Btn = document.createElement('button');
-        lot2Btn.textContent = "Lot 2";
+        lot2Btn.textContent = "Add to Lot 2";
         lot2Btn.setAttribute('id', 'lot2');
         oneCar.appendChild(lot2Btn);
 
         let lot3Btn = document.createElement('button');
-        lot3Btn.textContent = "Lot 3";
+        lot3Btn.textContent = "Add to Lot 3";
         lot3Btn.setAttribute('id', 'lot3');
         oneCar.appendChild(lot3Btn);
 
