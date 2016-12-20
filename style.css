@@ -26,8 +26,14 @@ ul{
 }
 
 .fleet button{
-    padding: 5px;
+    padding: 15px 30px;
     margin: 10px;
     border-radius: 10px;
     background-color:white;
+    font-size: .5em;
+    
+}
+
+.fleet button:hover{
+    background-color:teal;
 }
