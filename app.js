@@ -157,7 +157,11 @@ function showLots(input){
 
     let lotCars = document.createElement('h2');
     lot.appendChild(lotCars);
-    lotCars.textContent = input.vehicles.length;
+    for (let i=0; i<input.vehicles.length; i++){
+        let list = input.vehicles[i].make + ' ' + input.vehicles[i].model;
+    }
+    
+    lotCars.textContent = list;
 
     // All of above is from parsed data in api.  variable names will have
     // to change based on names agreed upon for the api.  Not sure if cars 
