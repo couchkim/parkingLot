@@ -171,9 +171,15 @@ function showLots(input){
 
 // This is a POST api to the backend url
 function carToLot(){
+    
+    // Need to add a function that says:
+    // if $ >= (lotCost x spaces) && (lotCapacity-spacesfilled >= size)
+    // then, submit and post AND
+    // reduct the $ by (lotCost x spaces)
+    
     let parkedCar = {
 
-        // I'm not sure how to call the write lot id
+        // I'm not sure how to call the right lot id
         id: document.querySelector('#'),
         make: document.querySelector('#brand'),
         model: document.querySelector('#type'),
