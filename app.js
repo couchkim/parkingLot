@@ -5,8 +5,34 @@
 
 
 window.addEventListener('load', function(){
+    
+    let cars = [
+    
+    makeCar('Honda', 'Odyssey', 3, 100),
+    makeCar('Tesla', 'ModelX', 1, 1000),
+    makeCar('Ford', 'Expedition', 4, 500),
+    makeCar('Ford', 'Pinto', 1, 10),
+    makeCar('Chevrolet', 'Suburban', 4, 200),
+    makeCar('Honda', 'Accord', 2, 50),
+    makeCar('Mercedes', 'C200', 1, 100)
+     ];
+
+    console.log (cars);
+
+
+    
+    function makeCar(make, model, size, money){
+    return{
+        make: make,
+        model: model,
+        size: size,
+        money: money,
+    }
+}
+
+    
     getLots();
-    loadCars(fleet);
+    loadCars(cars);
 
 
     let lot1Btn = document.querySelector('#lot1btn');
@@ -26,29 +52,13 @@ window.addEventListener('load', function(){
     // let submitBtn = document.querySelector('#submitUser');
     // submitBtn.addEventListener('click', addUser);
 
-
+    
+    
 })
 
-function makeCar(make, model, size, money){
-    return{
-        make: make,
-        model: model,
-        size: size,
-        money: money,
-    }
-}
 
-let fleet = [
-    
-    makeCar('Honda', 'Odyssey', 3, 100),
-    makeCar('Tesla', 'ModelX', 1, 1000),
-    makeCar('Ford', 'Expedition', 4, 500),
-    makeCar('Ford', 'Pinto', 1, 10),
-    makeCar('Chevrolet', 'Suburban', 4, 200),
-    makeCar('Honda', 'Accord', 2, 50)
-     ];
 
-    console.log (fleet);
+
 
     
 
@@ -62,14 +72,17 @@ function loadCars(cars){
         
         let brand = document.createElement('h2');
         brand.textContent = cars[i].make;
+        brand.setAttribute('id', 'brand');
         oneCar.appendChild(brand);
 
         let type = document.createElement('h2');
         type.textContent = cars[i].model;
+        type.setAttribute('id', 'type');
         oneCar.appendChild(type);
 
         let spaces = document.createElement('p');
         spaces.textContent = "Size: " + cars[i].size;
+        spaces.setAttribute('id', 'spaces');
         oneCar.appendChild(spaces);
 
         let cost = document.createElement('p');
@@ -110,7 +123,7 @@ function loadCars(cars){
 
 function getLots(){
     let request = new XMLHttpRequest();
-    request.open('GET', 'url');
+    request.open('GET', 'https://still-coast-76678.herokuapp.com/lots');
     request.addEventListener('load', function(){
         let response= JSON.parse(request.responseText);
 
@@ -132,19 +145,19 @@ function showLots(input){
 
     let lotID = document.createElement('h1');
     lot.appendChild(lotID);
-    lotID.textContent = "Lot " + input.lotNumber;
+    lotID.textContent = "Lot " + input.id;
 
     let lotCost = document.createElement('p');
     lot.appendChild(lotCost);
-    lotCost.textContent = "Cost:  $" + input.cost + "/space";
+    lotCost.textContent = "Cost:  $" + input.rate + "/space";
 
     let lotCapacity = document.createElement ('p');
     lot.appendChild(lotCapacity);
-    lotCapacity.textContent = "Capacity:  " + input.parkedCars +  " / " + input.lotcapacity;
+    lotCapacity.textContent = "Capacity:  " + input.vehicles.length +  " / " + input.capacity;
 
     let lotCars = document.createElement('h2');
     lot.appendChild(lotCars);
-    lotCars.textContent = input.parkedcars;
+    lotCars.textContent = input.vehicles.length;
 
     // All of above is from parsed data in api.  variable names will have
     // to change based on names agreed upon for the api.  Not sure if cars 
@@ -154,6 +167,28 @@ function showLots(input){
 
 // This is a POST api to the backend url
 function carToLot(){
+    let parkedCar = {
+
+        // I'm not sure how to call the write lot id
+        id: document.querySelector('#'),
+        make: document.querySelector('#brand'),
+        model: document.querySelector('#type'),
+        size: document.querySelector('#spaces'),
+        
+    }
+    
+    
+    
+    let request = new XMLHttpRequest;
+    request.open('POST', 'http://localhost:4567');
+    let body = JSON.stringify({
+        make: document.querySelector('#brand').value = '',
+        model: document.querySelector('#type').value = '',
+        size: document.querySelector('#spaces').value = '',
+        id: document.querySelector('#').value = ''
+
+
+    })
 
 
 

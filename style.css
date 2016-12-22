@@ -5,11 +5,12 @@ body{
 #title{
     background-color:teal;
     padding:15px 10px;
-    font-size: 2em;
+    font-size: 3em;
+    text-align: center;
 }
 
 section h1{
-    font-size: 1em;
+    font-size: 2em;
     text-align: center;
     padding:10px;
 }
@@ -36,11 +37,11 @@ ul{
 .fleet h2{
     display: inline;
     margin: 5px;
-    font-size: 1em;
+    font-size: 1.25em;
 }
 
 .fleet p{
-    font-size: .5em;
+    font-size: .75em;
     margin-left:10px;
 }
 
@@ -49,7 +50,7 @@ ul{
     margin: 10px;
     border-radius: 10px;
     background-color:white;
-    font-size: .5em;
+    font-size: .75em;
     
 }
 
