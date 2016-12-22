@@ -2,8 +2,6 @@
 // and all available cars.
 // Also, the buttons for lots need to have event listeners.
 
-
-
 window.addEventListener('load', function(){
     
     let cars = [
@@ -34,33 +32,10 @@ window.addEventListener('load', function(){
     getLots();
     loadCars(cars);
 
-
-    let lot1Btn = document.querySelector('#lot1btn');
-    lot1Btn.addEventListener('click', carToLot);
-
-    let lot2Btn = document.querySelector('#lot2btn');
-    lot2Btn.addEventListener('click', carToLot);
-
-    let lot3Btn = document.querySelector('#lot3btn');
-    lot3Btn.addEventListener('click', carToLot);
-
-    let lot4Btn = document.querySelector('#lot4btn');
-    lot4Btn.addEventListener('click', carToLot);
-
-    // Below is code if you want to allow user to create car on page
-
-    // let submitBtn = document.querySelector('#submitUser');
-    // submitBtn.addEventListener('click', addUser);
-
     
     
 })
-
-
-
-
-
-    
+   
 
 function loadCars(cars){
     for (let i=0; i<cars.length; i++){
@@ -93,30 +68,41 @@ function loadCars(cars){
         lot1Btn.textContent = "Add to Lot 1";
         lot1Btn.setAttribute('id', 'lot1btn');
         oneCar.appendChild(lot1Btn);
+        lot1Btn.addEventListener('click', function(){
+            carToLot(1, cars[i]);
+        });
 
         let lot2Btn = document.createElement('button');
         lot2Btn.textContent = "Add to Lot 2";
         lot2Btn.setAttribute('id', 'lot2btn');
         oneCar.appendChild(lot2Btn);
+        lot2Btn.addEventListener('click', function(){
+            carToLot(2, cars[i]);
+        });
+
 
         let lot3Btn = document.createElement('button');
         lot3Btn.textContent = "Add to Lot 3";
         lot3Btn.setAttribute('id', 'lot3btn');
         oneCar.appendChild(lot3Btn);
+        lot3Btn.addEventListener('click', function(){
+            carToLot(3, cars[i]);
+        });
+
 
         let lot4Btn = document.createElement('button');
         lot4Btn.textContent = "Add to Lot 4";
         lot4Btn.setAttribute('id', 'lot4btn');
         oneCar.appendChild(lot4Btn);
+        lot4Btn.addEventListener('click', function(){
+            carToLot(4, cars[i]);
+        });
+
 
 
     }
 
 }
-
-
-
-    
 
 
 // This is a GET api to the backend url
@@ -127,10 +113,10 @@ function getLots(){
     request.addEventListener('load', function(){
         let response= JSON.parse(request.responseText);
 
-        for(let i=0; i < response.lots; i++){
-            let lot = response.lots[i];
-            showLots();
-
+        for(let i=0; i < response.length; i++){
+            let lot = response[i];
+            showLots(lot);
+            console.log('hello');
         }
     })
 
@@ -153,15 +139,17 @@ function showLots(input){
 
     let lotCapacity = document.createElement ('p');
     lot.appendChild(lotCapacity);
-    lotCapacity.textContent = "Capacity:  " + input.vehicles.length +  " / " + input.capacity;
+    lotCapacity.textContent = "Capacity:  " + input.vehicle.length +  " / " + input.capacity;
 
-    let lotCars = document.createElement('h2');
-    lot.appendChild(lotCars);
-    for (let i=0; i<input.vehicles.length; i++){
-        let list = input.vehicles[i].make + ' ' + input.vehicles[i].model;
+    
+    for (let i=0; i<input.vehicle.length; i++){
+        let list = input.vehicle[i].make + ' ' + input.vehicle[i].model;
+         lotCars.textContent = list;
+         let lotCars = document.createElement('h2');
+        lot.appendChild(lotCars);
     }
     
-    lotCars.textContent = list;
+   
 
     // All of above is from parsed data in api.  variable names will have
     // to change based on names agreed upon for the api.  Not sure if cars 
@@ -170,51 +158,27 @@ function showLots(input){
 };
 
 // This is a POST api to the backend url
-function carToLot(){
+function carToLot(lot, car){
     
     // Need to add a function that says:
     // if $ >= (lotCost x spaces) && (lotCapacity-spacesfilled >= size)
     // then, submit and post AND
     // reduct the $ by (lotCost x spaces)
     
-    let parkedCar = {
 
-        // I'm not sure how to call the right lot id
-        id: document.querySelector('#'),
-        make: document.querySelector('#brand'),
-        model: document.querySelector('#type'),
-        size: document.querySelector('#spaces'),
-        
-    }
-    
-    
     
     let request = new XMLHttpRequest;
     request.open('POST', 'http://localhost:4567');
     let body = JSON.stringify({
-        make: document.querySelector('#brand').value = '',
-        model: document.querySelector('#type').value = '',
-        size: document.querySelector('#spaces').value = '',
-        id: document.querySelector('#').value = ''
+        make: car.make,
+        model: car.model,
+        size: car.size,
+        id: lot,
 
 
     })
 
-
+request.send(body);
 
 }
 
-
-// Was trying to figure out how to create cars on the web page
-
-// function addUser(){
-//     let user = {
-//         make: document.querySelector('#brand').value,
-//         model: document.querySelector('#kind').value,
-//         spaces: document.querySelector('#size').value,
-//         money:document.querySelector('#cash').value,
-//     };
-
-//     let parent = document.querySelector('#vehicles');
-//     let user.make= document.querySelector('#')
-// }
