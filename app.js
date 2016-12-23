@@ -1,4 +1,4 @@
-// When page loads, display all avaiable lots
+// When page loads, display all available lots
 // and all available cars.
 // Also, the buttons for lots need to have event listeners.
 
@@ -97,11 +97,7 @@ function loadCars(cars){
         lot4Btn.addEventListener('click', function(){
             carToLot(4, cars[i]);
         });
-
-
-
     }
-
 }
 
 
@@ -141,31 +137,20 @@ function showLots(input){
     lot.appendChild(lotCapacity);
     lotCapacity.textContent = "Capacity:  " + input.vehicle.length +  " / " + input.capacity;
 
-    
+    let lotCars = document.createElement('h2');
     for (let i=0; i<input.vehicle.length; i++){
         let list = input.vehicle[i].make + ' ' + input.vehicle[i].model;
          lotCars.textContent = list;
-         let lotCars = document.createElement('h2');
+         
         lot.appendChild(lotCars);
     }
-    
-   
-
-    // All of above is from parsed data in api.  variable names will have
-    // to change based on names agreed upon for the api.  Not sure if cars 
-    // already parked in lot will come back as an array that will have to be looped.
-
 };
 
 // This is a POST api to the backend url
+
+
 function carToLot(lot, car){
     
-    // Need to add a function that says:
-    // if $ >= (lotCost x spaces) && (lotCapacity-spacesfilled >= size)
-    // then, submit and post AND
-    // reduct the $ by (lotCost x spaces)
-    
-
     
     let request = new XMLHttpRequest;
     request.open('POST', 'http://localhost:4567');
@@ -175,10 +160,14 @@ function carToLot(lot, car){
         size: car.size,
         id: lot,
 
-
     })
 
 request.send(body);
 
 }
 
+// Could add a function that says:
+    // if $ >= (lotCost x spaces) && (lotCapacity-spacesfilled >= size)
+    // then, submit and post AND
+    // reduct the $ by (lotCost x spaces)
+    
