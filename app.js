@@ -153,7 +153,7 @@ function carToLot(lot, car){
     
     
     let request = new XMLHttpRequest;
-    request.open('POST', 'http://localhost:4567');
+    request.open('POST', 'https://still-coast-76678.herokuapp.com/parkCar');
     let body = JSON.stringify({
         make: car.make,
         model: car.model,
