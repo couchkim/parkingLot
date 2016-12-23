@@ -57,3 +57,15 @@ ul{
 .fleet button:hover{
     background-color:teal;
 }
+
+.parking{
+    background-color: lightgray;
+}
+
+#lots li{
+    display: inline-block;
+    margin: 50px;
+    border: 5px solid black;
+    padding: 20px 50px;
+    background-color:darkgray;
+}
